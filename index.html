@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Upload Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>PrimeUpload</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-item active">
+                    <i class="fas fa-upload"></i>
+                    <span>Upload</span>
+                </a>
+                <a href="details.html" class="nav-item">
+                    <i class="fas fa-eye"></i>
+                    <span>Preview</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1 class="page-title">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    Dashboard Upload
+                </h1>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="uploadCount">0</span>
+                        <span>Total Uploads</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="upload-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-file-upload"></i> Upload Files</h2>
+                        <div class="card-actions">
+                            <button class="btn-icon" onclick="clearForm()">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <form id="uploadForm" class="upload-form">
+                        <!-- Video Upload -->
+                        <div class="file-upload-group">
+                            <label class="file-label">
+                                <i class="fas fa-video"></i>
+                                <span>Video File</span>
+                                <input type="file" name="video" accept="video/*" id="video">
+                            </label>
+                            <div id="videoPreview" class="preview-area hidden">
+                                <video controls class="preview-video"></video>
+                                <span class="preview-filename"></span>
+                            </div>
+                        </div>
+
+                        <!-- PDF Upload -->
+                        <div class="file-upload-group">
+                            <label class="file-label">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>PDF Document</span>
+                                <input type="file" name="pdf" accept=".pdf" id="pdf">
+                            </label>
+                            <div id="pdfPreview" class="preview-area hidden">
+                                <iframe class="preview-pdf"></iframe>
+                                <span class="preview-filename"></span>
+                            </div>
+                        </div>
+
+                        <!-- Form Fields -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Training">Training</option>
+                                    <option value="Documentation">Documentation</option>
+                                    <option value="Sales">Sales</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Priority</label>
+                                <select id="priority" name="priority" required>
+                                    <option value="">Select Priority</option>
+                                    <option value="Low">🔵 Low</option>
+                                    <option value="Medium">🟡 Medium</option>
+                                    <option value="High">🟠 High</option>
+                                    <option value="Urgent">🔴 Urgent</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="upload-btn">
+                            <i class="fas fa-rocket"></i>
+                            <span>Save Upload</span>
+                            <div class="progress-bar hidden">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="script.js"></script>
+</body>
+</html>
